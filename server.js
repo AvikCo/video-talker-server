@@ -5,6 +5,7 @@ const socket = require("socket.io");
 const { ExpressPeerServer } = require("peer");
 const groupCallHandler = require("./groupCallHandler");
 const { v4: uuidv4 } = require("uuid");
+const keys = require('config/keys');
 const PORT = process.env.PORT || 5000;
 
 const app = express();
@@ -17,9 +18,7 @@ app.get("/", (req, res) => {
 
 app.get("/api/get-turn-credentials", (req, res) => {
   // place here  your Twilio credentials !!
-  const accountSid = "AC8410d44e1fc9edf7d3d6dd8254f18ba5";
-  const authToken = "d0facffac8c6dd6e000dfaa94c0dff84";
-  const client = twilio(accountSid, authToken);
+  const client = twilio(keys.accountSid, keys.authToken);
 
   client.tokens.create().then((token) => res.send({ token }));
 });
