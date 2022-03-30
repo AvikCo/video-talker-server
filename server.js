@@ -5,7 +5,7 @@ const socket = require("socket.io");
 const { ExpressPeerServer } = require("peer");
 const groupCallHandler = require("./groupCallHandler");
 const { v4: uuidv4 } = require("uuid");
-const keys = require('config/keys');
+const keys = require('./config/keys');
 const PORT = process.env.PORT || 5000;
 
 const app = express();
